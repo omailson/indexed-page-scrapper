@@ -1,10 +1,11 @@
 from SimpleResolver import SimpleResolver
 import requests
 
+from helpers import save_file
+
 def download_file(url, filename):
     response = requests.get(url)
-    with open(filename, 'w') as f:
-        f.write(response.content)
+    save_file(filename, response.content)
 
 class DownloadFile(SimpleResolver):
     def __init__(self, url_field, filename):

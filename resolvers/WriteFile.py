@@ -1,13 +1,6 @@
 from VoidResolver import VoidResolver
 
-def save_file(filename, content):
-    with open(filename, 'w') as f:
-        f.write(content)
-
-def value_or_callable(val, *args, **kwargs):
-    if callable(val):
-        return val(*args, **kwargs)
-    return val
+from helpers import save_file, value_or_callable
 
 class WriteFile(VoidResolver):
     def __init__(self, filename, content):

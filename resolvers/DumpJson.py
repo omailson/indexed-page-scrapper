@@ -1,6 +1,8 @@
 import json
 from SimpleResolver import SimpleResolver
 
+from helpers import dump_json
+
 class DumpJson(SimpleResolver):
     def __init__(self, filename, *args, **kwargs):
         if isinstance(filename, basestring):
@@ -12,6 +14,5 @@ class DumpJson(SimpleResolver):
         self.kwargs = kwargs
 
     def resolveData(self, data):
-        with open(self.getFilename(data), 'w') as f:
-            json.dump(data, f, *self.args, **self.kwargs) 
+        dump_json(self.getFilename(data), data, *self.args, **self.kwargs)
         return data
