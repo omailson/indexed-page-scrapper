@@ -1,5 +1,6 @@
 from Counter import Counter
 from CustomField import CustomField
+from DownloadFile import DownloadFile
 from ExcludeFields import ExcludeFields
 from Filter import Filter
 from Limit import Limit
