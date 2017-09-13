@@ -1,13 +1,9 @@
-from BaseResolver import BaseResolver
+from VoidResolver import VoidResolver
+from helpers import value_or_callable
 
-class Print(BaseResolver):
+class Print(VoidResolver):
     def __init__(self, message):
         self.message = message
 
-    def resolve(self, generator):
-        for v in generator:
-            if callable(self.message):
-                print self.message(v)
-            else:
-                print self.message
-            yield v
+    def call(self, data):
+        print value_or_callable(self.message, data)

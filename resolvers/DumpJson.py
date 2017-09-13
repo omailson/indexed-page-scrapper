@@ -1,18 +1,14 @@
 import json
-from SimpleResolver import SimpleResolver
+from VoidResolver import VoidResolver
 
-from helpers import dump_json
+from helpers import dump_json, value_or_callable
 
-class DumpJson(SimpleResolver):
+class DumpJson(VoidResolver):
     def __init__(self, filename, *args, **kwargs):
-        if isinstance(filename, basestring):
-            self.getFilename = lambda _: filename
-        else:
-            self.getFilename = filename
-
+        self.filename = filename
         self.args = args
         self.kwargs = kwargs
 
-    def resolveData(self, data):
-        dump_json(self.getFilename(data), data, *self.args, **self.kwargs)
-        return data
+    def call(self, data):
+        filename = value_or_callable(self.filename, data)
+        dump_json(filename, data, *self.args, **self.kwargs)
