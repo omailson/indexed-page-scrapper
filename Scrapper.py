@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from abc import ABCMeta, abstractmethod
 from urlparse import urljoin
 
-from helpers import MOCK_PAGE, MOCK_INDEX, fetch_model_page_mock, fetch_page, fetch_page_mock
+from helpers import fetch_page
 
 class Scrapper:
     __metaclass__ = ABCMeta
@@ -21,16 +21,13 @@ class Scrapper:
 
     def __fetchPage(self, uri):
         url = urljoin(self.baseUrl, uri)
-        if MOCK_PAGE:
-            return fetch_model_page_mock(uri)
-        else:
-            return fetch_page(url)
+        return self.fetchPage(url)
+
+    def fetchPage(self, url):
+        return fetch_page(url)
 
     def getIndexLinks(self):
-        if MOCK_INDEX:
-            page = fetch_page_mock()
-        else:
-            page = fetch_page(self.baseUrl)
+        page = self.fetchPage(self.baseUrl)
         soup = BeautifulSoup(page, 'html.parser')
         return self.getLinks(soup)
 

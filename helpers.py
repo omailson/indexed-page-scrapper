@@ -3,9 +3,6 @@ import json
 from urlparse import urljoin
 from bs4 import BeautifulSoup
 
-MOCK_INDEX = True
-MOCK_PAGE = True
-
 def fetch_page(url):
     request = requests.get(url)
     return request.text
@@ -48,7 +45,7 @@ def save_pages(scrapper):
         url = urljoin(scrapper.baseUrl, page['uri'])
         filename = 'model%d.html' % number
         save_page(url, filename)
-        pages_reference[page['uri']] = filename
+        pages_reference[url] = filename
         number = number + 1
         print 'OK'
 
