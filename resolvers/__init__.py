@@ -5,5 +5,6 @@ from DumpJson import DumpJson
 from ExcludeFields import ExcludeFields
 from Filter import Filter
 from Limit import Limit
+from Print import Print
 from Sort import Sort
 from Transform import Transform
