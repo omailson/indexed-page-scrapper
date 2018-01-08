@@ -19,16 +19,23 @@ class Scrapper:
     def getData(self, soup):
         pass
 
-    def __fetchPage(self, uri):
-        url = urljoin(self.baseUrl, uri)
-        return self.fetchPage(url)
+    def getParsedPage(self, uri=None):
+        url = self.buildUrl(uri)
+        page = self.fetchPage(url)
+        return self.parsePage(page)
+
+    def buildUrl(self, uri):
+        return urljoin(self.baseUrl, uri)
 
     def fetchPage(self, url):
         return fetch_page(url)
 
+    def parsePage(self, page):
+        return BeautifulSoup(page, 'html.parser')
+
     def getIndexLinks(self):
         page = self.fetchPage(self.baseUrl)
-        soup = BeautifulSoup(page, 'html.parser')
+        soup = self.parsePage(page)
         return self.getLinks(soup)
 
     def getPageData(self, link):
@@ -36,11 +43,12 @@ class Scrapper:
             uri = link['uri']
         else:
             uri = link
-        page = self.__fetchPage(uri)
-        soup = BeautifulSoup(page, 'html.parser')
+        url = self.buildUrl(uri)
+        page = self.fetchPage(url)
+        soup = self.parsePage(page)
 
         data = self.getData(soup)
-        data['url'] = data.get('url', urljoin(self.baseUrl, uri))
+        data['url'] = data.get('url', url)
         if isinstance(link, dict):
             for key in link.iterkeys():
                 if key is not 'uri':
