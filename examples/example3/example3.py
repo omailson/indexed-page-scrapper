@@ -9,8 +9,8 @@ class Example3Scrapper(Scrapper):
     @staticmethod
     def links_mapper(li_tag):
         a_tag = li_tag.find('a')
-        new_hire_tag = li_tag.find('strong', string=re.compile('New hire'))
-        return {'uri': a_tag.get('href'), 'new_hire': new_hire_tag is not None}
+        new_user_tag = li_tag.find('strong', string=re.compile('New hire'))
+        return {'uri': a_tag.get('href'), 'new_user': new_user_tag is not None}
 
     def fetchPage(self, filename):
         # You don't need to overwrite this method if you're fetching a page from a web server

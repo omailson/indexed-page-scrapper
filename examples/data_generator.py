@@ -107,12 +107,12 @@ def build_index_tree(template, data):
     list_tag = soup_index.find(id='list')
 
     for user in data:
-        new_hire = 'New hire!' if int(user['years_active']) == 0 else ''
+        new_user = 'New!' if int(user['years_active']) == 0 else ''
         tag = Tag.create(
             soup_index,
             Tag('li', children=[
                 Tag('a', href=user['userid'], children=user['name']),
-                Tag('strong', children=new_hire)
+                Tag('strong', children=new_user)
             ])
         )
         list_tag.append(tag)
