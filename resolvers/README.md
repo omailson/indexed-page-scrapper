@@ -2,7 +2,7 @@
 
 Welcome to the resolvers folder. These are a set of operators that you may find useful to use on your scrapped pages.
 
-When you implement your own scrapper, what you return is a list of dictionaries that can be operated on thanks to the resolvers that are included on this library.
+When you implement your own scrapper, what is returned is a list of dictionaries that can be operated on thanks to the resolvers that are included on this library.
 
 Example resolvers are: filtering, value transformations, custom fields, sorting.
 
@@ -93,7 +93,7 @@ NOTE: `filename` can also be a string, but keep in mind that it will be overwrit
 
 Dumps data to a json file given a filename. The filename can be either a string or a function that receives `data` and returns a string.
 
-Any extra arguments are passed on to the `json.dump` function call.
+Any extra arguments are passed on to the `json.dump()` function call.
 
 #### Example
 
