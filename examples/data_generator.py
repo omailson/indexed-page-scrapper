@@ -14,6 +14,11 @@ index_html = """
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <title>Example</title>
     </head>
+    <style type="text/css">
+        #list li a, #nav span {
+            margin: 5px;
+        }
+    </style>
     <body>
         <div id="content">
             <ul id="list">
@@ -60,8 +65,7 @@ def save_soup(soup, filename, create_path=False):
     if create_path:
         create_path_if_needed(filename)
     with open(filename, 'w') as f:
-        # TODO fix prettified links
-        f.write(soup.prettify('utf-8'))
+        f.write(soup.encode())
 
 def is_iterable(obj):
     return hasattr(obj, '__iter__')
