@@ -8,11 +8,7 @@
 
 ## Motivation
 
-The motivation behind this package was to find an easier way developers could grab information from websites that followed an indexed directory pattern.
-
-*REMOVEME I decided to create this tool after I stumble upon the same problem for the second time: backup an old (and dying) social network whose contents were organized in the same manner (an index page with links to the contents I wanted to scrap and save).*
-*REMOVEME that followed the common pattern of information being provided in a indexed directory.*
-*REMOVEME that could save some developers*
+The motivation behind this package is to find an easier way developers can grab information from websites that follows an indexed directory pattern.
 
 ## How it works
 
@@ -40,11 +36,6 @@ We use this method to scrap the index page for links pointing to the content pag
 ### `getData`
 
 This method receives a parsed content page as a parameter. Use this parameter to scrap the content page and return a key-value map representation of its data.
-
-*REMOVEME*
-Given a parsed content page as a parameter, use this method to return a key-value map representation of the scrapped page.
-Use this method to return a key-value map representation of the scrapped page.
-In this other method you'll receive as a parameter a parsed content page so you can extract data and return a key-value map representation of this data.
 
 ### Example
 
@@ -83,11 +74,9 @@ Sometimes scrapping data is not enough. You may want to perform some operations 
 
 For that reason we have some built-in resolvers that can be used on your scrapped data.
 
-*TODO resolvers text*
-
 Resolvers operates on the output data. You can think of them as some pre-build functions that will be used in a `map()` over the resulting iterable.
 
-Resolvers operations are [lazy](https://en.wikipedia.org/wiki/Lazy_evaluation) -- i.e., they don't have to wait for the scrapping to finish to start evaluating the output data. This is useful because some resolvers may decide to terminate earlier (before fetching all pages).
+These operations are [lazy](https://en.wikipedia.org/wiki/Lazy_evaluation) -- i.e., they don't have to wait for the scrapping to finish to start evaluating the output data. This is useful because some resolvers may decide to terminate earlier (before fetching all pages).
 
 ### Example
 
